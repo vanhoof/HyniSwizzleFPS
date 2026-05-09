@@ -1,0 +1,8 @@
+Package: com.local.hyniswizzlefps
+Name: HyniSwizzleFPS
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Unlocks Minecraft Bedrock's 60 FPS cap on ProMotion iPads and iPhones
+Maintainer: local
+Author: local
+Section: Tweaks

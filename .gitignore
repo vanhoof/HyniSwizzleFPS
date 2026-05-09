@@ -1,0 +1,5 @@
+.theos/
+.theos-toolchain/
+build/
+.DS_Store
+*.dSYM
