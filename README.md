@@ -213,17 +213,6 @@ Apple's docs are explicit that `preferredFrameRateRange` takes precedence over `
 
 This dylib is **independent of MCBE updates** in a way that vtable hooks aren't. As long as iOS keeps `+[CADisplayLink displayLinkWithTarget:selector:]` and the modern frame-rate API around, the swizzle keeps working — Mojang stripping RTTI or rearranging C++ classes doesn't affect it.
 
-## Why this is a different mechanism than vtable-style hooks
-
-Other Minecraft Bedrock dylibs in this ecosystem (e.g., `MCClient.dylib` for zoom/overlay) hook into Minecraft's own polymorphic C++ classes (`CameraAPI`, `Player`, `Level`, etc.) via vtable patching. That's the right surface for changing engine behavior.
-
-The FPS cap isn't engine behavior — it's iOS-level. On iPad ProMotion, `+[CADisplayLink displayLinkWithTarget:selector:]` returns a 60 Hz link by default, and apps must explicitly raise the rate. Mojang ships an iPad target that doesn't opt in, so the engine renders once per 60 Hz callback regardless of GPU headroom.
-
-That puts the right hook surface on the iOS API, not the game binary. Two consequences:
-
-1. **No coordination with vtable-based dylibs.** Different layer, no shared state, no ordering requirement.
-2. **Independent of MCBE updates.** The swizzle relies only on iOS API stability.
-
 ## Acknowledgments
 
 - [HynisLauncher](https://github.com/congcq/HynisLauncher) by congcq — the upstream MaterialLoader / RenderDragon shader-loading dylib this is meant to coexist with.
