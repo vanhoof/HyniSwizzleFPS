@@ -2,7 +2,7 @@
 #
 # Builds a sideload-ready dylib at build/HyniSwizzleFPS.dylib. Drag this into
 # Sideloadly's "Inject dylibs" list when re-signing the Minecraft IPA
-# (alongside MCClient.dylib, HyniSign.dylib, and MaterialLoader.dylib).
+# (alongside MCClient.dylib, HyniSign.dylib, and libhynisloader.dylib).
 #
 # Targets:
 #   make            Build sideload-ready dylib at build/HyniSwizzleFPS.dylib
