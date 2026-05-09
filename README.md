@@ -2,7 +2,7 @@
 
 Lifts Minecraft: Bedrock Edition's 60 FPS cap on ProMotion iPads and iPhones for sideloaded (non-jailbroken) installs.
 
-Designed to be injected alongside [HyniSign](https://github.com/vanhoof/HyniSign) (Microsoft sign-in fix) and [HynisLauncher](https://github.com/congcq/HynisLauncher)'s `MaterialLoader.dylib` (RenderDragon shader loader). Each is a separate dylib injection — no shared state.
+Designed to be injected alongside [HyniSign](https://github.com/vanhoof/HyniSign) (Microsoft sign-in fix) and [HynisLoader](https://github.com/congcq/HynisLoader)'s `MaterialLoader.dylib` (RenderDragon shader loader). Each is a separate dylib injection — no shared state.
 
 ## The problem
 
@@ -147,7 +147,7 @@ There are no host unit tests. The hook logic is small enough (~30 LoC of branchi
 1. Open **Sideloadly** on your Mac (or Windows).
 2. Plug in your iPad / iPhone, trust the computer.
 3. Drag your Minecraft IPA onto the Sideloadly window. Click the **gear icon → Advanced options**.
-4. Under **Inject dylibs/deb/bundle**, add `build/HyniSwizzleFPS.dylib`. (You can add other dylibs in the same step — `MaterialLoader.dylib` from HynisLauncher, `HyniSign.dylib`, `MCClient.dylib`.)
+4. Under **Inject dylibs/deb/bundle**, add `build/HyniSwizzleFPS.dylib`. (You can add other dylibs in the same step — `MaterialLoader.dylib` from HynisLoader, `HyniSign.dylib`, `MCClient.dylib`.)
 5. **iPhone ProMotion only** — under **Modify Info.plist** (or "Apply Custom Args"), add:
 
    ```
@@ -215,7 +215,7 @@ This dylib is **independent of MCBE updates** in a way that vtable hooks aren't.
 
 ## Acknowledgments
 
-- [HynisLauncher](https://github.com/congcq/HynisLauncher) by congcq — the upstream MaterialLoader / RenderDragon shader-loading dylib this is meant to coexist with.
+- [HynisLoader](https://github.com/congcq/HynisLoader) by congcq — the upstream MaterialLoader / RenderDragon shader-loading dylib this is meant to coexist with.
 - [HyniSign](https://github.com/vanhoof/HyniSign) — Microsoft / Xbox sign-in fix for the same ecosystem; this project's structure and CI are patterned on it.
 - Apple's `CADisplayLink` documentation and the iOS 15 `CAFrameRateRange` API, without which there'd be nothing to call.
 
