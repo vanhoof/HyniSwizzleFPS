@@ -36,7 +36,7 @@ All hooks are gated on `UIScreen.mainScreen.maximumFramesPerSecond > 60`, so on 
 | | |
 |---|---|
 | **Tested on** | iPadOS 17+, iPad Pro ProMotion (60 → 120 FPS confirmed in Performance HUD) |
-| **Game version** | Minecraft: Bedrock Edition 1.26.13 |
+| **Game versions** | Minecraft: Bedrock Edition 1.26.13 and 1.26.20 |
 | **Sideloader** | Sideloadly (free Apple ID) |
 | **Architecture** | arm64 |
 | **Min iOS** | 14.0 (range-based API gated on `@available(iOS 15.0, *)`, falls back to `preferredFramesPerSecond` on 14) |
