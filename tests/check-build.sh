@@ -90,7 +90,7 @@ done
 
 # Public function present in the symbol table.
 syms=$(nm "$DYLIB" 2>/dev/null || true)
-for sym in HSFPS_Init; do
+for sym in HSFPS_Init HSFPS_EffectiveCap; do
     if echo "$syms" | grep -q " _${sym}\$"; then
         check "defines ${sym}" ok
     else

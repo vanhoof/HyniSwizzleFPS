@@ -112,6 +112,22 @@ static bool HSFPS_swizzle_instance(Class cls, SEL sel, IMP newImpl, void *origSl
     return true;
 }
 
+int HSFPS_EffectiveCap(void) {
+    NSInteger devMax = HSFPS_DeviceMax();
+    if (devMax <= 60) return 60;
+
+    // iPhone ProMotion is system-clamped to 60 unless the main app bundle's
+    // Info.plist sets CADisableMinimumFrameDurationOnPhone = YES. The
+    // swizzle's API call still succeeds in that case, so the only honest
+    // signal that 120 will actually render is the plist key being present.
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+        id v = [[NSBundle mainBundle] objectForInfoDictionaryKey:
+                @"CADisableMinimumFrameDurationOnPhone"];
+        if (![v isKindOfClass:[NSNumber class]] || ![v boolValue]) return 60;
+    }
+    return (int)devMax;
+}
+
 bool HSFPS_Init(void) {
     static bool installed = false;
     if (installed) return true;
